@@ -40,3 +40,35 @@ module.exports = [require('ftrm-ctrl/pid'), {
 	}
 }];
 ```
+
+### ftrm-ctrl/bangbang
+
+A bang-bang control. Pretty name, isn't it?
+
+Configuration:
+
+ * ```input```:
+   * ```hysteresis```: Controller's hysteresis. Default: ```0```
+   * ```actualValue```: Measured process variable. Mandatory.
+   * ```desiredValue```: Setpoint for the controller. Mandatory.
+ * ```output```:
+   * ```controlValue```: Boolean control value. Mandatory.
+ * ```invert```: Invert the output control value.
+
+Example:
+
+```js
+// Control the boiler temperture to 60 deg celsius
+// based on the current temperature sensor reading.
+module.exports = [require('ftrm-ctrl/bangbang'), {
+	input: {
+		hysteresis: {value: 10},
+		desiredValue: {value: 60},
+		actualValue: {pipe: 'temperatureSensor'}
+	},
+	output: {
+		controlValue: {pipe: 'boiler'}
+	},
+	invert: true // Turn the boiler on if the acutalValue is below the desiredValue
+}];
+```
