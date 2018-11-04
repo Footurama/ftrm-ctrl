@@ -77,6 +77,7 @@ describe('factory', () => {
 		expect(mockBang.mock.calls.length).toBe(1);
 		const bangCtx = mockBang.mock.instances[0];
 		expect(bangCtx.desiredValue).toBe(input.desiredValue.value);
+		expect(bangCtx.hysteresis).toBe(input.hysteresis.value);
 		expect(bangCtx.controlValue).toBe(output.controlValue.value);
 		const newValue = false;
 		bangCtx.controlValue = newValue;
@@ -101,6 +102,7 @@ describe('factory', () => {
 		expect(mockBang.mock.calls.length).toBe(1);
 		const bangCtx = mockBang.mock.instances[0];
 		expect(bangCtx.desiredValue).toBe(input.desiredValue.value);
+		expect(bangCtx.hysteresis).toBe(input.hysteresis.value);
 		expect(bangCtx.controlValue).toBe(!output.controlValue.value);
 		const newValue = false;
 		bangCtx.controlValue = newValue;

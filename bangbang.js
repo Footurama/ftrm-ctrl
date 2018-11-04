@@ -33,6 +33,11 @@ function factory (opts, input, output) {
 			return input.desiredValue.value;
 		}
 	});
+	Object.defineProperty(ctx, 'hysteresis', {
+		get: function () {
+			return input.hysteresis.value;
+		}
+	});
 	Object.defineProperty(ctx, 'controlValue', {
 		get: function () {
 			return opts.invert ? !output.controlValue.value : output.controlValue.value;
